@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		026DCDC31D8B1AF00096B2F7 /* RATreeViewAggregate */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 026DCDC41D8B1AF00096B2F7 /* Build configuration list for PBXAggregateTarget "RATreeViewAggregate" */;
+			buildPhases = (
+				026DCDC91D8B1AFE0096B2F7 /* ShellScript */,
+			);
+			dependencies = (
+				026DCDC81D8B1AF70096B2F7 /* PBXTargetDependency */,
+			);
+			name = RATreeViewAggregate;
+			productName = RATreeViewAggregate;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		0626D5631BF7E85200CD3B04 /* RATreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = B53B976917D3843600A05E2F /* RATreeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0626D5641BF7E85B00CD3B04 /* RABatchChanges.h in Headers */ = {isa = PBXBuildFile; fileRef = B59F730F198D6E42006BAED0 /* RABatchChanges.h */; };
@@ -76,6 +91,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		026DCDC71D8B1AF70096B2F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B53B973817D3840800A05E2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0626D5561BF7E81E00CD3B04;
+			remoteInfo = "RATreeView-iOS";
+		};
 		0626D6961BF8A37800CD3B04 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B53B973817D3840800A05E2F /* Project object */;
@@ -86,6 +108,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		026DCDBD1D8B1AD40096B2F7 /* RATreeViewAggregate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RATreeViewAggregate.h; sourceTree = "<group>"; };
+		026DCDBE1D8B1AD40096B2F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0626D5571BF7E81E00CD3B04 /* RATreeView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RATreeView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0626D68B1BF8A37800CD3B04 /* RATreeView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RATreeView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0626D6941BF8A37800CD3B04 /* RATreeViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RATreeViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +187,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		026DCDBC1D8B1AD40096B2F7 /* RATreeViewAggregate */ = {
+			isa = PBXGroup;
+			children = (
+				026DCDBD1D8B1AD40096B2F7 /* RATreeViewAggregate.h */,
+				026DCDBE1D8B1AD40096B2F7 /* Info.plist */,
+			);
+			path = RATreeViewAggregate;
+			sourceTree = "<group>";
+		};
 		0626D6981BF8A37800CD3B04 /* RATreeViewTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +211,7 @@
 			children = (
 				B53B974917D3840800A05E2F /* RATreeView */,
 				0626D6981BF8A37800CD3B04 /* RATreeViewTests */,
+				026DCDBC1D8B1AD40096B2F7 /* RATreeViewAggregate */,
 				B53B974217D3840800A05E2F /* Frameworks */,
 				B53B974117D3840800A05E2F /* Products */,
 			);
@@ -394,6 +428,10 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Rafal Augustyniak";
 				TargetAttributes = {
+					026DCDC31D8B1AF00096B2F7 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
 					0626D5561BF7E81E00CD3B04 = {
 						CreatedOnToolsVersion = 7.1;
 					};
@@ -424,6 +462,7 @@
 				0626D5561BF7E81E00CD3B04 /* RATreeView-iOS */,
 				06A30D811D6A35ED00ED86C3 /* RATreeView-tvOS */,
 				0626D6931BF8A37800CD3B04 /* RATreeViewTests */,
+				026DCDC31D8B1AF00096B2F7 /* RATreeViewAggregate */,
 			);
 		};
 /* End PBXProject section */
@@ -458,6 +497,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		026DCDC91D8B1AFE0096B2F7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\nSDK_VERSION=$(echo ${SDK_NAME} | grep -o '.\\{3\\}$')\n\n\nif [ ${PLATFORM_NAME} = \"iphonesimulator\" ]\nthen\nOTHER_SDK_TO_BUILD=iphoneos${SDK_VERSION}\nelse\nOTHER_SDK_TO_BUILD=iphonesimulator${SDK_VERSION}\nfi\n\n\nif [ \"true\" == ${ALREADYINVOKED:-false} ]\nthen\necho \"RECURSION: I am NOT the root invocation, so I'm NOT going to recurse\"\nelse\n# CRITICAL:\n# Prevent infinite recursion (Xcode sucks)\nexport ALREADYINVOKED=\"true\"\n\n\n\necho \"RECURSION: ...about to invoke: xcodebuild -configuration \\\"${CONFIGURATION}\\\" -project \\\"${PROJECT_DIR}/${PROJECT_NAME}.xcodeproj\\\" -scheme \\\"${TARGET_NAME}\\\" -sdk \\\"${OTHER_SDK_TO_BUILD}\\\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO\" BUILD_DIR=\\\"${BUILD_DIR}\\\" BUILD_ROOT=\\\"${BUILD_ROOT}\\\" SYMROOT=\\\"${SYMROOT}\\\"\n\n# Step 1. Build Device and Simulator versions\n\nxcodebuild  ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -project \"${PROJECT_DIR}/${PROJECT_NAME}.xcodeproj\" -scheme \"${TARGET_NAME}\" -sdk iphoneos -destination generic/platform=iOS  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n#xcodebuild  ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -workspace \"${PROJECT_DIR}/${PROJECT_NAME}.xcworkspace\" -scheme \"${TARGET_NAME}\" -sdk \"${OTHER_SDK_TO_BUILD}\"  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\nxcodebuild ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -project \"${PROJECT_DIR}/${PROJECT_NAME}.xcodeproj\" -scheme \"${TARGET_NAME}\" -sdk iphonesimulator  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"  -destination 'platform=iOS Simulator,name=iPhone 6s Plus' clean build\n\n\n# Step 2. Copy the framework structure to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0626D5521BF7E81E00CD3B04 /* Sources */ = {
@@ -522,6 +577,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		026DCDC81D8B1AF70096B2F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0626D5561BF7E81E00CD3B04 /* RATreeView-iOS */;
+			targetProxy = 026DCDC71D8B1AF70096B2F7 /* PBXContainerItemProxy */;
+		};
 		0626D6971BF8A37800CD3B04 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0626D68A1BF8A37800CD3B04 /* RATreeView */;
@@ -530,6 +590,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		026DCDC51D8B1AF00096B2F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		026DCDC61D8B1AF00096B2F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		0626D5611BF7E81E00CD3B04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -867,6 +941,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		026DCDC41D8B1AF00096B2F7 /* Build configuration list for PBXAggregateTarget "RATreeViewAggregate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				026DCDC51D8B1AF00096B2F7 /* Debug */,
+				026DCDC61D8B1AF00096B2F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		0626D5601BF7E81E00CD3B04 /* Build configuration list for PBXNativeTarget "RATreeView-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
